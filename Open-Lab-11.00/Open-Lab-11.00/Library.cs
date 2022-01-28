@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,44 +8,59 @@ namespace Open_Lab_11._00
     {
         public int numberOfBooks;
         public int numbersOfStudents;
-        public List<string> studentsList = new List<string>();
-        public List<string> booksList = new List<string>();
+        private List<string> studentsList = new List<string>();
+        private List<Book> booksList = new List<Book>();
 
-        public void NewBook(string BookName, string Name)
+        public void AddBook(Book book)
         {
-            booksList.Add(BookName);
-            if (!studentsList.Contains(Name))
-            {
-                studentsList.Add(Name);
-            }
+            booksList.Add(book);
         }
 
-        public void WriteAll()
+        public void RemoveBook(string nameOfBookToRemove)
         {
+            Book bookToRemove = null;
+            foreach (Book book in booksList)
+            {
+                if (book.Title == nameOfBookToRemove)
+                {
+                    bookToRemove = book;
+                }
+            }
+
+            booksList.Remove(bookToRemove);
+        }
+
+        public void AddStudent(string nameOfStudent)
+        {
+            studentsList.Add(nameOfStudent);
+        }
+
+        public override string ToString()
+        {
+            string output;
+
             numberOfBooks = booksList.Count;
             numbersOfStudents = studentsList.Count;
             
 
-            string stats = "Number of students:" + numbersOfStudents + "\n";
-            stats += "Number of books:" + numberOfBooks + "\n";
+            output = "Number of students:" + numbersOfStudents + "\n";
+            output += "Number of books:" + numberOfBooks + "\n";
 
-            string title =  "\n" + "Customers:" + "\n";
+            output += "\n" + "Customers:" + "\n";
 
-            string Customer1 = "\n" + studentsList[0];
+            output += "\n" + studentsList[0];
             for (int i = 0; i < 2; i++)
             {
-                Customer1 += "\n" + booksList[i];
+                output += "\n" + booksList[i];
             }
 
-            string Customer2 = "\n" + "\n" + studentsList[1];
+            output += "\n" + "\n" + studentsList[1];
             for (int i = 2; i < 4; i++)
             {
-                Customer2 += "\n" + booksList[i];
+                output += "\n" + booksList[i];
             }
 
-
-            string output = stats + title + Customer1 + Customer2;
-            Console.WriteLine(output);
+            return output;
         }
 
     }
