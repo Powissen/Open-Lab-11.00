@@ -1,10 +1,7 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Open_Lab_11._00
 {
-
     public class Book
     {
         public static List<string> categoryList = new List<string>() { "detské", "romantické", "náučné", "sci-fi", "dobrodružné" };
@@ -14,7 +11,6 @@ namespace Open_Lab_11._00
         private string author;
         private int releaseDate;
 
-
         public Book()
         {
             title = "-1";
@@ -23,6 +19,7 @@ namespace Open_Lab_11._00
             author = "-1";
             releaseDate = -1;
         }
+
         public Book(string title, int pages)
         {
             this.title = title;
@@ -31,6 +28,7 @@ namespace Open_Lab_11._00
             author = "-1";
             releaseDate = -1;
         }
+
         public Book(string title, int pages, string category, string author, int releaseDate)
         {
             this.title = title;
@@ -40,12 +38,12 @@ namespace Open_Lab_11._00
             this.releaseDate = releaseDate;
         }
 
-
-
-        public void Title(string NewTitle)
+        public string Title
         {
-            title = NewTitle;
+            get => title;
+            set => title = value;
         }
+
         public void Pages(int NewPages)
         {
             pages = NewPages;
@@ -54,11 +52,14 @@ namespace Open_Lab_11._00
                 pages = 1;
             }
         }
+
         public string Category { get; set; }
+
         public void Author(string NewAuthor)
         {
             author = NewAuthor;
         }
+
         public void ReleaseDate(int NewReleaseDate)
         {
             releaseDate = NewReleaseDate;
@@ -73,6 +74,5 @@ namespace Open_Lab_11._00
             string output = title + pages + category + author + releaseDate;
             return output;
         }
-
     }
 }
